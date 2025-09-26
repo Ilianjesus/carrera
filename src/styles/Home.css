@@ -1,0 +1,62 @@
+/* Contenedor principal */
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #EDEDED; /* gris claro */
+    padding: 2rem;
+    padding-bottom: 8rem;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Título principal */
+  .home-title {
+    color: #0D1B2A; /* azul oscuro */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Párrafo */
+  .home-text {
+    color: #333333; /* gris oscuro para texto */
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    text-align: center;
+  }
+  
+  /* Botones */
+  .home-button {
+    margin: 0.5rem 0;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    border: none;
+    background-color: #FFC107; /* amarillo mango */
+    color: #0D1B2A; /* azul oscuro */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 200px;
+    transition: all 0.3s ease;
+  }
+  
+  .home-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  /* Botón de WhatsApp */
+  .home-whatsapp-button {
+    background-color: #25D366; /* verde WhatsApp */
+    color: white;
+  }
+  
+  .home-whatsapp-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
