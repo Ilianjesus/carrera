@@ -23,11 +23,45 @@ function Formulario() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Datos enviados:", formData);
-    // Aquí después conectas con el backend (fetch o axios)
+  
+    try {
+      const response = await fetch( import.meta.env.VITE_N8N_WEBHOOK,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+  
+      if (response.ok) {
+        alert("Inscripción enviada correctamente ✅");
+        // Opcional: limpiar formulario
+        setFormData({
+          nombreCompleto: "",
+          fechaNacimiento: "",
+          rama: "",
+          telefono: "",
+          correo: "",
+          categoria: "",
+          tallaPlayera: "",
+          contactoEmergenciaNombre: "",
+          contactoEmergenciaTelefono: "",
+          condicionesMedicas: "",
+          folio: "",
+        });
+      } else {
+        alert("Hubo un error al enviar la inscripción ❌");
+      }
+    } catch (error) {
+      console.error("Error enviando los datos:", error);
+      alert("Error de conexión al enviar la inscripción ❌");
+    }
   };
+  
 
   // Número de WhatsApp del organizador
   const whatsappNumber = "522711734027"; // <-- cámbialo por el tuyo
