@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
+import logo from "../assets/LogoPDMU.jpeg";
+import ruta from "../assets/Ruta.png";
 
 function Home() {
   const navigate = useNavigate();
@@ -8,8 +10,7 @@ function Home() {
     navigate("/formulario");
   };
 
-  // Número de WhatsApp del organizador
-  const whatsappNumber = "522711734027"; // <-- cámbialo al tuyo
+  const whatsappNumber = "522711734027";
   const whatsappMessage = "Hola, quiero más información sobre la carrera";
 
   const handleWhatsapp = () => {
@@ -21,9 +22,18 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1 className="home-title">Detalles de la Carrera</h1>
+      <div className="home-header">
+        <div className="home-date">9 Noviembre</div>
+      </div>
+
+      {/* Logo circular debajo de la fecha */}
+      <img src={logo} alt="Pentathlon Logo" className="home-logo-circle" />
+
+      {/* Texto en la posición del logo anterior */}
+      <h1 className="home-title">Carrera por el Pentathlón Deportivo Militarizado Universitario</h1>
+      
       <p className="home-text">
-        Bienvenido a la página oficial de inscripción a la carrera. Aquí encontrarás toda la información sobre el evento.
+        El Pentathlón Deportivo Militarizado Universitario te invita a la primera edición de la carrera organizada.
       </p>
 
       <button className="home-button" onClick={handleInscribete}>
@@ -32,6 +42,8 @@ function Home() {
       <button className="home-button home-whatsapp-button" onClick={handleWhatsapp}>
         Contactar por WhatsApp
       </button>
+
+      <img src={ruta} alt="Ruta de la carrera" className="home-route" />
     </div>
   );
 }
