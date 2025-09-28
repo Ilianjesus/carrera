@@ -36,10 +36,12 @@ function Formulario() {
           body: JSON.stringify(formData),
         }
       );
+
+      const result = await response.json();
+      console.log(resutl);
   
-      if (response.ok) {
-        alert("Inscripción enviada correctamente ✅");
-        // Opcional: limpiar formulario
+      if (response.ok && result.success === "success") {
+        alert(result.message + " ✅");
         setFormData({
           nombreCompleto: "",
           fechaNacimiento: "",
@@ -54,7 +56,7 @@ function Formulario() {
           folio: "",
         });
       } else {
-        alert("Hubo un error al enviar la inscripción ❌");
+        alert(result.message + " ❌");
       }
     } catch (error) {
       console.error("Error enviando los datos:", error);
