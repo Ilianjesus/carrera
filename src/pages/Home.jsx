@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 import logo from "../assets/LogoPDMU.jpeg";
 import ruta from "../assets/Ruta.png";
+import { FaWhatsapp } from "react-icons/fa";
 
 function Home() {
   const navigate = useNavigate();
@@ -30,16 +31,22 @@ function Home() {
       <img src={logo} alt="Pentathlon Logo" className="home-logo-circle" />
 
       {/* Texto en la posición del logo anterior */}
-      <h1 className="home-title">Carrera por el Pentathlón Deportivo Militarizado Universitario</h1>
+      <h1 className="home-title"> Carrera Pentathlón Deportivo Militarizado Universitario</h1>
       
       <p className="home-text">
-        El Pentathlón Deportivo Militarizado Universitario te invita a la primera edición de la carrera organizada.
+        El Pentathlón Deportivo Militarizado Universitario te invita a la primera edición de la carrera organizada....
       </p>
 
       <button className="home-button" onClick={handleInscribete}>
         Inscríbete
       </button>
-      <button className="home-button home-whatsapp-button" onClick={handleWhatsapp}>
+
+      <button 
+      type="button"
+      className="home-button home-whatsapp-button" 
+      onClick={handleWhatsapp}
+      >
+        <FaWhatsapp style={{ marginRight: "0rem",  }} />
         Contactar por WhatsApp
       </button>
 

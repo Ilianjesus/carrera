@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: #0D1B2A; /* azul oscuro */
+    background-color: #1B263B; /* azul oscuro */
     padding: 2rem;
     padding-bottom: 8rem; /* espacio extra para botones */
     box-sizing: border-box;
@@ -14,8 +14,8 @@
   
   /* Título principal */
   .formulario-title {
-    color: #FFC107; /* amarillo mango */
-    font-size: 2rem;
+    color: #ffffff; /* blanco */
+    font-size: 1.80rem;
     margin-bottom: 1.5rem;
     text-align: center;
     word-break: break-word;
@@ -29,7 +29,7 @@
     align-items: flex-start;
     width: 100%;
     max-width: 500px;
-    background-color: #1B263B; /* azul medio oscuro */
+    background-color: #ffffff; /* azul medio oscuro */
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -37,7 +37,7 @@
   
   /* Labels */
   .formulario-label {
-    color: #E0E0E0; /* gris claro */
+    color: #1B263B; /* gris claro */
     font-size: 1rem;
     align-self: flex-start;
     margin: 0.5rem 0 0.2rem 0;
@@ -50,7 +50,7 @@
     padding: 0.8rem 1rem;
     margin: 0.3rem 0 1rem 0;
     border-radius: 12px;
-    border: none;
+    border: 2px solid #CCCCCC; /* gris claro */
     width: 100%;
     font-size: 1rem;
     box-sizing: border-box;
@@ -90,29 +90,44 @@
   
   /* Botón de WhatsApp especial */
   .formulario-whatsapp-button {
-    margin-top: 0.5rem;
-    padding: 0.8rem 2rem;
-    border-radius: 12px;
-    border: none;
-    background-color: #25D366; /* verde WhatsApp */
+    background-color: #25d366;
     color: white;
-    font-size: 1rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
     font-weight: bold;
     cursor: pointer;
-    width: 100%;
-    transition: all 0.3s ease;
   }
   
   .formulario-whatsapp-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+    background-color: #1ebe57;
   }
   
   /* Títulos de secciones */
   .formulario-section-title {
-    color: #FFC107;
+    color: #1B263B;
     font-size: 1.5rem;
     margin: 1rem 0 0.5rem 0;
     text-align: left;
   }
   
+  /* Logo circular debajo de la fecha */
+.form-logo-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%; /* Esto lo hace circular */
+  object-fit: cover;
+  margin: 1rem 0;
+  border: 3px solid #FFC107; /* opcional, para un borde amarillo */
+}
+
+.formulario-header {
+  display: flex;
+  align-items: center; /* Centra verticalmente el h1 con el logo */
+  justify-content: space-between; /* Pone el h1 a la izquierda y el logo a la derecha */
+  margin-bottom: 1.5rem; /* Espacio debajo del encabezado */
+  gap: 1rem; /* Espacio entre el h1 y el logo */
+}
+

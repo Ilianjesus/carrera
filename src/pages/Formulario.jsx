@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../styles/Formulario.css";
+import logo from "../assets/LogoPDMU.jpeg";
+import { FaWhatsapp } from "react-icons/fa";
 
 function Formulario() {
   const [formData, setFormData] = useState({
@@ -79,7 +81,12 @@ function Formulario() {
 
   return (
     <div className="formulario-container">
+
+      <div className="formulario-header">
       <h1 className="formulario-title">Formulario de Inscripción</h1>
+      <img src={logo} alt="Pentathlon Logo" className="form-logo-circle" />
+      </div>
+
       <form className="formulario-form" onSubmit={handleSubmit}>
         {/* --- Folio --- */}
         <h2 className="formulario-section-title">Validación</h2>
@@ -97,18 +104,22 @@ function Formulario() {
 
         {/* --- Enlace para adquirir folio --- */}
         <div>
-          <p style={{ color: "#E0E0E0", marginBottom: "0.5rem" }}>
+          <small style={{ color: "#1B263B", marginBottom: "0.5rem" }}>
             Si aún no cuentas con un folio para inscribirte en la carrera,
             puedes adquirirlo contactándote con el organizador a través del
             siguiente enlace:
-          </p>
+          </small>
+
           <button
+            style={{ marginTop: "1rem" }}
             type="button"
             className="formulario-whatsapp-button"
             onClick={handleWhatsapp}
           >
-            Obtener folio por WhatsApp
+          <FaWhatsapp style={{ marginRight: "0.5rem" }} />
+          Obtener folio por WhatsApp
           </button>
+
         </div>
 
         {/* --- Datos personales --- */}

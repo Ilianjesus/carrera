@@ -73,13 +73,19 @@
 
 /* Botón de WhatsApp */
 .home-whatsapp-button {
-  background-color: #25D366;
-  color: #fff;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .home-whatsapp-button:hover {
-  background-color: #1ebe5a;
-  transform: translateY(-2px);
+  background-color: #1ebe57;
 }
 
 /* Imagen de la ruta */
