@@ -30,7 +30,7 @@ function Home() {
 
       {/* Logo circular debajo de la fecha */}
       <img src={logo} alt="Pentathlon Logo" className="home-logo-circle" />
-      <img src={LogoCarreraSF} alt="Carrera Logo" className=""/>
+      <img src={LogoCarreraSF} alt="Carrera Logo" className="home-logo-carrera"/>
       {/* Texto en la posición del logo anterior */}
       <h1 className="home-title"> Carrera Pentathlón Deportivo Militarizado Universitario</h1>
       

@@ -107,3 +107,21 @@
   margin: 1rem 0;
   border: 3px solid #FFC107; /* opcional, para un borde amarillo */
 }
+
+/* Logo de la carrera */
+.home-logo-carrera {
+  width: 280px; /* tamaño visible pero no exagerado */
+  max-width: 90%;
+  margin: 1.5rem 0;
+  border-radius: 20px; /* bordes suaves */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* sombra elegante */
+  background: rgba(255, 255, 255, 0.05); /* leve fondo translúcido */
+  padding: 10px; /* marco interno */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.home-logo-carrera:hover {
+  transform: scale(1.05); /* ligero zoom */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
