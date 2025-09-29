@@ -40,7 +40,7 @@ function Formulario() {
       );
 
       const result = await response.json();
-      console.log(resutl);
+      console.log(result);
   
       if (response.ok && result.success === "success") {
         alert(result.message + " ✅");
