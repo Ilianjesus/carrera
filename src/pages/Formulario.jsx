@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../styles/Formulario.css";
 import logo from "../assets/LogoPDMU.jpeg";
 import { FaWhatsapp } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 function Formulario() {
   const [formData, setFormData] = useState({
@@ -43,7 +44,13 @@ function Formulario() {
       console.log(result);
   
       if (response.ok && result.status === "success") {
-        alert(result.message + " ✅");
+        Swal.fire({
+          title: "¡Inscripción exitosa! 🎉",
+          text: result.message,
+          icon: "success",
+          confirmButtonText: "Aceptar",
+          confirmButtonColor: "#1B263B",
+        });
         setFormData({
           nombreCompleto: "",
           fechaNacimiento: "",
@@ -58,11 +65,22 @@ function Formulario() {
           folio: "",
         });
       } else {
-        alert(result.message + " ❌");
+        Swal.fire({
+          title: "Error ❌",
+          text: result.message,
+          icon: "error",
+          confirmButtonText: "Reintentar",
+          confirmButtonColor: "#D33",
+        });
       }
     } catch (error) {
       console.error("Error enviando los datos:", error);
-      alert("Error de conexión al enviar la inscripción ❌");
+      Swal.fire({
+        title: "Error de conexión",
+        text: "No se pudo enviar la inscripción",
+        icon: "error",
+        confirmButtonText: "Cerrar",
+      });
     }
   };
   

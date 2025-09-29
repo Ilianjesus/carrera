@@ -3,6 +3,7 @@ import "../styles/Home.css";
 import logo from "../assets/LogoPDMU.jpeg";
 import ruta from "../assets/Ruta.png";
 import { FaWhatsapp } from "react-icons/fa";
+import LogoCarreraSF from "../assets/LogoCarreraSF.png";
 
 function Home() {
   const navigate = useNavigate();
@@ -24,12 +25,12 @@ function Home() {
   return (
     <div className="home-container">
       <div className="home-header">
-        <div className="home-date">9 Noviembre</div>
+        <div className="home-date">9 Noviembre 2025</div>
       </div>
 
       {/* Logo circular debajo de la fecha */}
       <img src={logo} alt="Pentathlon Logo" className="home-logo-circle" />
-
+      <img src={LogoCarreraSF} alt="Carrera Logo" className=""/>
       {/* Texto en la posición del logo anterior */}
       <h1 className="home-title"> Carrera Pentathlón Deportivo Militarizado Universitario</h1>
       
