@@ -42,7 +42,7 @@ function Formulario() {
       const result = await response.json();
       console.log(result);
   
-      if (response.ok && result.success === "success") {
+      if (response.ok && result.status === "success") {
         alert(result.message + " ✅");
         setFormData({
           nombreCompleto: "",
