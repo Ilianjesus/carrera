@@ -143,3 +143,16 @@
 .btn-whatsapp .icon {
   font-size: 1.3rem;
 }
+
+/* Botón principal 2 */
+.btn-primary2 {
+  background: linear-gradient(135deg, #d32f2f, #f44336); /* Rojo oscuro → rojo vivo */
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary2:hover {
+  background: linear-gradient(135deg, #f44336, #d32f2f); /* Inverso en hover */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(211, 47, 47, 0.35); /* Sombra en rojo */
+}

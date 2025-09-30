@@ -68,43 +68,6 @@
     min-height: 80px;
   }
   
-  /* Botones */
-  .formulario-button {
-    margin-top: 1rem;
-    padding: 0.8rem 2rem;
-    border-radius: 12px;
-    border: none;
-    background-color: #FFC107; /* amarillo mango */
-    color: #0D1B2A; /* azul oscuro */
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-  
-  .formulario-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }
-  
-  /* Botón de WhatsApp especial */
-  .formulario-whatsapp-button {
-    background-color: #25d366;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .formulario-whatsapp-button:hover {
-    background-color: #1ebe57;
-  }
-  
   /* Títulos de secciones */
   .formulario-section-title {
     color: #1B263B;
@@ -131,3 +94,55 @@
   gap: 1rem; /* Espacio entre el h1 y el logo */
 }
 
+  /* Botones */
+  .formulario-button {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    border: none;
+    background-color: #FFC107; /* amarillo mango */
+    color: #0D1B2A; /* azul oscuro */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .formulario-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+/* Botón WhatsApp (mismo estilo que Home) */
+.formulario-whatsapp-button {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  border: none;
+  padding: 1rem 2.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.formulario-whatsapp-button:hover {
+  background: linear-gradient(135deg, #128c7e, #25d366);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+}
+
+.formulario-whatsapp-button .icon {
+  font-size: 1.3rem;
+}
+
+/* Versión extendida para botones dentro de formularios */
+.btn-primary.full-width {
+  width: 100%;
+}
