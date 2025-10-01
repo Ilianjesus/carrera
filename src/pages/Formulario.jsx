@@ -177,14 +177,19 @@ function Formulario() {
               required
             />
 
+            <label htmlFor="fechaNacimiento" className="formulario-label">
+              Fecha de nacimiento
+            </label>
             <input
               type="date"
+              id="fechaNacimiento"
               name="fechaNacimiento"
               value={formData.fechaNacimiento}
               onChange={handleChange}
               className="formulario-input"
               required
             />
+
 
             <select
               name="rama"
