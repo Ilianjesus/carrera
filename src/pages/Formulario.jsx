@@ -138,17 +138,13 @@ function Formulario() {
             </small>
 
             <button
-            type="button"
-            className="formulario-whatsapp-button"
-            onClick={() =>
-            window.open(
-            "https://wa.me/521234567890?text=Hola, quiero un folio para la carrera",
-            "_blank"
-                )
-              }
+              type="button"
+              className="formulario-whatsapp-button"
+              onClick={handleWhatsapp}
             >
-            <FaWhatsapp className="icon" /> Contactar por WhatsApp
+              <FaWhatsapp className="icon" /> Contactar por WhatsApp
             </button>
+                        
 
             <div className="home-buttons">
             <button
