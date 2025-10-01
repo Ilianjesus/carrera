@@ -168,10 +168,15 @@ function Formulario() {
               name="nombreCompleto"
               placeholder="Nombre completo"
               value={formData.nombreCompleto}
-              onChange={handleChange}
+              onChange={(e) => {
+                // Solo letras, espacios y tildes
+                const value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+                setFormData({ ...formData, nombreCompleto: value });
+              }}
               className="formulario-input"
               required
             />
+
 
             <label htmlFor="fechaNacimiento" className="formulario-label">
               Fecha de nacimiento
@@ -183,8 +188,10 @@ function Formulario() {
               value={formData.fechaNacimiento}
               onChange={handleChange}
               className="formulario-input"
+              max={new Date().toISOString().split("T")[0]} // hoy como fecha máxima
               required
             />
+
 
 
             <select
@@ -204,10 +211,15 @@ function Formulario() {
               name="telefono"
               placeholder="Teléfono"
               value={formData.telefono}
-              onChange={handleChange}
+              onChange={(e) => {
+                // Solo números y máximo 10 dígitos
+                const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                setFormData({ ...formData, telefono: value });
+              }}
               className="formulario-input"
               required
             />
+
 
             <input
               type="email"
@@ -217,6 +229,37 @@ function Formulario() {
               onChange={handleChange}
               className="formulario-input"
               required
+            />
+                        <input
+              type="text"
+              name="contactoEmergenciaNombre"
+              placeholder="Nombre de contacto de emergencia"
+              value={formData.contactoEmergenciaNombre}
+              onChange={handleChange}
+              className="formulario-input"
+              required
+            />
+
+            <input
+              type="tel"
+              name="contactoEmergenciaTelefono"
+              placeholder="Teléfono de contacto de emergencia"
+              value={formData.contactoEmergenciaTelefono}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                setFormData({ ...formData, contactoEmergenciaTelefono: value });
+              }}
+              className="formulario-input"
+              required
+            />
+
+
+            <textarea
+              name="condicionesMedicas"
+              placeholder="Condiciones médicas relevantes (opcional)"
+              value={formData.condicionesMedicas}
+              onChange={handleChange}
+              className="formulario-textarea"
             />
 
             <h2 className="formulario-section-title">Datos de la Carrera</h2>
@@ -249,33 +292,6 @@ function Formulario() {
               <option value="XL">XL</option>
             </select>
 
-            <input
-              type="text"
-              name="contactoEmergenciaNombre"
-              placeholder="Nombre de contacto de emergencia"
-              value={formData.contactoEmergenciaNombre}
-              onChange={handleChange}
-              className="formulario-input"
-              required
-            />
-
-            <input
-              type="tel"
-              name="contactoEmergenciaTelefono"
-              placeholder="Teléfono de contacto de emergencia"
-              value={formData.contactoEmergenciaTelefono}
-              onChange={handleChange}
-              className="formulario-input"
-              required
-            />
-
-            <textarea
-              name="condicionesMedicas"
-              placeholder="Condiciones médicas relevantes (opcional)"
-              value={formData.condicionesMedicas}
-              onChange={handleChange}
-              className="formulario-textarea"
-            />
 
             <div className="home-buttons">
               <button
