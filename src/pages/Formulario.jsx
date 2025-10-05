@@ -134,7 +134,7 @@ function Formulario() {
 
             <small style={{ color: "#1B263B", marginBottom: "0.5rem" }}>
               Si aún no cuentas con un folio para inscribirte en la carrera,
-              puedes adquirirlo contactándote con el organizador:
+              puedes adquirirlo contactándote con el organizador usando el boton de WhatsApp que se encuentra a continuacion:
             </small>
 
             <button

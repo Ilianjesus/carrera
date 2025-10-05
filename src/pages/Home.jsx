@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 import "../styles/Formulario.css";
 import logo from "../assets/LogoPDMU.jpeg";
-import ruta from "../assets/Ruta.png";
+import ruta from "../assets/Ruta2.png";
 import { FaWhatsapp } from "react-icons/fa";
 import LogoCarreraSF from "../assets/LogoCarreraSF.png";
 
@@ -51,11 +51,15 @@ function Home() {
 
       
       <p className="home-text">
-        El Pentathlón Deportivo Militarizado Universitario te invita a la primera edición de la carrera organizada....
-      </p>
+  ¡Llega la 1.ª Gran Carrera del Pentathlón!<br /><br />
+  Este 9 de noviembre, vive la emoción de correr en la primera edición de la carrera organizada por el Pentathlón Deportivo Militarizado Universitario.<br /><br />
+  Elige tu reto: 5 km, 10 km o caminata recreativa, y disfruta de un recorrido lleno de energía, disciplina y espíritu de equipo.<br /><br />
+  ¡No te lo puedes perder! Inscríbete y forma parte de esta gran experiencia.
+</p>
 
 
 
+      <h1 className="home-title"> Ruta</h1>
       <img src={ruta} alt="Ruta de la carrera" className="home-route" />
     </div>
   );
