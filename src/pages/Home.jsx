@@ -14,7 +14,7 @@ function Home() {
   };
 
   const whatsappNumber = "522711734027";
-  const whatsappMessage = "Hola, quiero más información sobre la carrera";
+  const whatsappMessage = "Hola, podria brindarme información sobre la carrera";
 
   const handleWhatsapp = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(

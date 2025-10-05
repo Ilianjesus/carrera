@@ -93,7 +93,7 @@ function Formulario() {
 
   const whatsappNumber = "522711734027";
   const whatsappMessage =
-    "Hola, quiero adquirir un folio para inscribirme a la carrera";
+    "Hola, me gustaria adquirir un folio para inscribirme a la carrera!";
 
   const handleWhatsapp = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
