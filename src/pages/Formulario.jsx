@@ -272,9 +272,8 @@ function Formulario() {
               required
             >
               <option value="">Selecciona una categoría</option>
+              <option value="1k">1k</option>
               <option value="5k">5k</option>
-              <option value="10k">10k</option>
-              <option value="Caminata">Caminata</option>
             </select>
 
             <select
