@@ -132,7 +132,7 @@ function Formulario() {
       </div>
 
       {/* El form mantiene onSubmit, pero handleSubmit evita el envío en step 1 */}
-      <form className="formulario-form" onSubmit={handleSubmit}>
+      <form className="formulario-form" onSubmit={handleSubmit} translate="no">
         {step === 1 && (
           <>
             <h2 className="formulario-section-title">Validación</h2>
@@ -299,21 +299,23 @@ function Formulario() {
             </select>
 
             <select
-              name="tallaPlayera"
-              value={formData.tallaPlayera}
-              onChange={handleChange}
-              className="formulario-select"
-              required
-            >
-              <option value="" disabled hidden>
-                Selecciona tu talla de playera
-              </option>
-              {tallas.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
+  name="tallaPlayera"
+  value={formData.tallaPlayera}
+  onChange={handleChange}
+  className="formulario-select"
+  required
+  translate="no" // 🚫 evita traducción automática
+>
+  <option value="" disabled hidden>
+    Selecciona tu talla de playera
+  </option>
+  {tallas.map((t) => (
+    <option key={t} value={t} translate="no">
+      {t}
+    </option>
+  ))}
+</select>
+
 
 
             <div className="home-buttons">
