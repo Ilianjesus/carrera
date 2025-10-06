@@ -21,6 +21,8 @@ function Formulario() {
     folio: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -31,32 +33,43 @@ function Formulario() {
   // IMPORTANTE: ahora handleSubmit evita enviar si estamos en paso 1
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Si el submit ocurre en el paso 1 (p. ej. por Enter), no enviar: avanzar al paso 2
+  
+    // Si el submit ocurre en el paso 1, solo avanza
     if (step === 1) {
       setStep(2);
       return;
     }
-
-    // Si estamos en el paso 2, sí enviamos todo junto
+  
+    // Evitar doble envío
+    if (isSubmitting) return;
+  
+    setIsSubmitting(true); // 🔒 bloquea el botón
+  
     try {
       const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
+  
       const result = await response.json();
       console.log(result);
-
+  
       if (response.ok && result.status === "success") {
         Swal.fire({
           title: "¡Inscripción exitosa! 🎉",
-          text: result.message,
+          html: `
+            <p>${result.message}</p>
+            <p style="margin-top:10px; font-weight:bold; color:#1B263B;">
+              Tu inscripción fue registrada. <br />
+              Preséntate el día <strong>8 de Noviembre</strong> para recoger tu kit 🎽
+            </p>
+          `,
           icon: "success",
           confirmButtonText: "Aceptar",
           confirmButtonColor: "#1B263B",
         });
+  
         setFormData({
           nombreCompleto: "",
           fechaNacimiento: "",
@@ -70,7 +83,7 @@ function Formulario() {
           condicionesMedicas: "",
           folio: "",
         });
-        setStep(1); // Regresamos al inicio si quieres reiniciar el flujo
+        setStep(1);
       } else {
         Swal.fire({
           title: "Error ❌",
@@ -88,8 +101,11 @@ function Formulario() {
         icon: "error",
         confirmButtonText: "Cerrar",
       });
+    } finally {
+      setIsSubmitting(false); // 🔓 libera el botón
     }
   };
+  
 
   const whatsappNumber = "522711734027";
   const whatsappMessage =
@@ -302,9 +318,14 @@ function Formulario() {
               </button>
 
               {/* Este botón hace submit del form y aquí handleSubmit sí enviará */}
-              <button type="submit" className="btn-primary">
-                Enviar Inscripción
+              <button
+                type="submit"
+                className="btn-primary"
+                disabled={isSubmitting} // deshabilita mientras se envía
+              >
+                {isSubmitting ? "Enviando..." : "Enviar Inscripción"}
               </button>
+
             </div>
           </>
         )}
