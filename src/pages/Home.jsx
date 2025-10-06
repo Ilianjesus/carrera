@@ -52,9 +52,9 @@ function Home() {
       
       <p className="home-text">
   ¡Prepárate para la 1.ª Gran Carrera del Pentathlón!<br /><br />
-  Este 9 de noviembre, vive una experiencia única llena de emoción, energía y espíritu deportivo en la primera edición de la carrera organizada por el Pentathlón Deportivo Militarizado Universitario.<br /><br />
-  ¡Acepta el reto! Corre 5 km, 10 km o participa en la caminata recreativa y sé parte de un evento que celebra la disciplina, el esfuerzo y el trabajo en equipo.<br /><br />
-  La inscripción general es de $250 e incluye un kit completo para la carrera.<br /><br />
+  Este 9 de noviembre, vive una experiencia única llena de emoción, energía y espíritu deportivo.<br /><br />
+  ¡Acepta el reto! Corre 5 km, 10 km o participa en la caminata recreativa.<br /><br />
+  Inscripción general de $250 e incluye un kit completo para la carrera.<br /><br />
   Además, al finalizar la carrera, se realizará una emocionante premiación para los primeros lugares.<br /><br />
   ¡No lo pienses más! Inscríbete y vive la emoción de correr junto a verdaderos campeones.
 </p>
