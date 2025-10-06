@@ -61,8 +61,9 @@ function Formulario() {
           html: `
             <p>${result.message}</p>
             <p style="margin-top:10px; font-weight:bold; color:#1B263B;">
-              Tu inscripción fue registrada. <br />
-              Preséntate el día <strong>8 de Noviembre</strong> para recoger tu kit 🎽
+              Haz concluido tu registro correctamente. <br />
+              Preséntate el día <strong>8 de Noviembre con tu folio</strong> para recoger tu kit 🎽
+              ¡Y nos vemos en la carrera! 🏃‍♂️🏅
             </p>
           `,
           icon: "success",
