@@ -55,7 +55,7 @@ function Home() {
   Este 9 de noviembre, vive una experiencia única llena de emoción, energía y espíritu deportivo.<br /><br />
   ¡Acepta el reto! Corre 5 km, 10 km o participa en la caminata recreativa.<br /><br />
   Inscripción general de $250 e incluye un kit completo para la carrera.<br /><br />
-  Además, al finalizar la carrera, se realizará una emocionante premiación para los primeros lugares.<br /><br />
+  Al finalizar la carrera, se realizará la premiación para los primeros lugares.<br /><br />
   ¡No lo pienses más! Inscríbete y vive la emoción de correr junto a verdaderos campeones.
 </p>
 
