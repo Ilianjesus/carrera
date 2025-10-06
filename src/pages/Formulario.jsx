@@ -59,17 +59,20 @@ function Formulario() {
         Swal.fire({
           title: "¡Inscripción exitosa! 🎉",
           html: `
-            <p>${result.message}</p>
-            <p style="margin-top:10px; font-weight:bold; color:#1B263B;">
-              Haz concluido tu registro correctamente. <br />
-              Preséntate el día <strong>8 de Noviembre con tu folio</strong> para recoger tu kit 🎽
-              ¡Y nos vemos en la carrera! 🏃‍♂️🏅
+            <p style="font-size:18px; color:#1B263B; margin-bottom:10px;">
+              <strong>¡Felicidades, ${formData.nombreCompleto}!</strong>
+            </p>
+            <p style="color:#1B263B;">
+              Has concluido tu registro correctamente. <br />
+              Preséntate el día <strong>8 de Noviembre</strong> con tu folio para recoger tu kit 🎽 <br />
+              ¡Nos vemos en la carrera! 🏃‍♀️🏅
             </p>
           `,
           icon: "success",
           confirmButtonText: "Aceptar",
           confirmButtonColor: "#1B263B",
         });
+        
   
         setFormData({
           nombreCompleto: "",
