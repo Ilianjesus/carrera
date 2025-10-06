@@ -111,7 +111,7 @@ function Formulario() {
   };
   
 
-  const whatsappNumber = "522711734027";
+  const whatsappNumber = "522711033134";
   const whatsappMessage =
     "Hola, me gustaria adquirir un folio para inscribirme a la carrera!";
 
