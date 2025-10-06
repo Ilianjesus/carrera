@@ -22,6 +22,8 @@ function Formulario() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const tallas = ["XS", "S", "M", "L", "XL"];
+
 
   const handleChange = (e) => {
     setFormData({
@@ -303,12 +305,14 @@ function Formulario() {
               className="formulario-select"
               required
             >
-              <option value="">Selecciona tu talla de playera</option>
-              <option value="XS">XS</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
+              <option value="" disabled hidden>
+                Selecciona tu talla de playera
+              </option>
+              {tallas.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
             </select>
 
 
