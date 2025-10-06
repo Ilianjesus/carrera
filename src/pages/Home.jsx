@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 import "../styles/Formulario.css";
 import logo from "../assets/LogoPDMU.jpeg";
-import ruta from "../assets/Ruta2.png";
+import ruta from "../assets/Ruta3.png";
 import { FaWhatsapp } from "react-icons/fa";
 import LogoCarreraSF from "../assets/LogoCarreraSF.png";
 
@@ -51,11 +51,14 @@ function Home() {
 
       
       <p className="home-text">
-  ¡Llega la 1.ª Gran Carrera del Pentathlón!<br /><br />
-  Este 9 de noviembre, vive la emoción de correr en la primera edición de la carrera organizada por el Pentathlón Deportivo Militarizado Universitario.<br /><br />
-  Elige tu reto: 5 km, 10 km o caminata recreativa, y disfruta de un recorrido lleno de energía, disciplina y espíritu de equipo.<br /><br />
-  ¡No te lo puedes perder! Inscríbete y forma parte de esta gran experiencia.
+  ¡Prepárate para la 1.ª Gran Carrera del Pentathlón!<br /><br />
+  Este 9 de noviembre, vive una experiencia única llena de emoción, energía y espíritu deportivo en la primera edición de la carrera organizada por el Pentathlón Deportivo Militarizado Universitario.<br /><br />
+  ¡Acepta el reto! Corre 5 km, 10 km o participa en la caminata recreativa y sé parte de un evento que celebra la disciplina, el esfuerzo y el trabajo en equipo.<br /><br />
+  La inscripción general es de $250 e incluye un kit completo para la carrera.<br /><br />
+  Además, al finalizar la carrera, se realizará una emocionante premiación para los primeros lugares.<br /><br />
+  ¡No lo pienses más! Inscríbete y vive la emoción de correr junto a verdaderos campeones.
 </p>
+
 
 
 
