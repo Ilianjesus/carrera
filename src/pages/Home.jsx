@@ -71,6 +71,31 @@ function Home() {
       <br />
       <h1 className="home-title"> Ruta 1km</h1>
       <img src={ruta1k} alt="Ruta de la carrera" className="home-route" />
+
+            {/* Footer de contacto del desarrollador */}
+      <footer className="home-footer">
+        <p>¿Te gusta esta página? Contáctame como desarrollador:</p>
+        <p className="footer-copy"> {new Date().getFullYear()} Ing. de Software Ilian Orduña</p>
+        <div className="footer-buttons">
+          <a
+            href="mailto:ilian.orduna@example.com"
+            className="footer-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Email
+          </a>
+          <a
+            href="https://wa.me/522711734027?text=Hola%20Ilian,%20me%20gustó%20tu%20trabajo"
+            className="footer-btn whatsapp-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+        </div>
+      </footer>
+
     </div>
   );
 }

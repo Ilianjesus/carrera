@@ -156,3 +156,56 @@
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 8px 20px rgba(211, 47, 47, 0.35); /* Sombra en rojo */
 }
+
+/* Footer minimalista y elegante */
+.home-footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #E0E1DD;
+  font-size: 0.95rem;
+}
+
+.home-footer p {
+  margin: 0.5rem 0;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.footer-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  transition: all 0.3s ease;
+}
+
+.footer-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 15px rgba(78, 84, 200, 0.35);
+}
+
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.whatsapp-btn:hover {
+  background: linear-gradient(135deg, #128c7e, #25d366);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.35);
+}
+
+.footer-copy {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: rgba(224,225,221,0.7);
+}
