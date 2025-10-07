@@ -35,20 +35,55 @@ function Formulario() {
     });
   };
 
-const handleNextStep = () => {
-  if (step === 1) {
-    // Validar que el folio esté lleno
-    if (!formData.folio.trim()) {
+  const handleNextStep = () => {
+    if (step === 1) {
+      const folioRegex = /^C[A-Z0-9]{8}$/; // Empieza con C + 8 caracteres alfanuméricos
+  
+      if (!formData.folio.trim()) {
+        Swal.fire({
+          title: "Campo requerido",
+          text: "Debes ingresar tu folio antes de continuar.",
+          icon: "warning",
+          confirmButtonColor: "#1B263B",
+        });
+        return;
+      }
+  
+      if (!folioRegex.test(formData.folio)) {
+        Swal.fire({
+          title: "Folio inválido",
+          html: `
+            Tu folio debe cumplir con las siguientes condiciones:
+            <ul style="text-align:left;">
+              <li>9 caracteres en total</li>
+              <li>Solo letras mayúsculas y números</li>
+            </ul>
+          `,
+          icon: "warning",
+          confirmButtonColor: "#1B263B",
+        });
+        return;
+      }
+  
+      // Mostrar confirmación para revisar el folio
       Swal.fire({
-        title: "Campo requerido",
-        text: "Debes ingresar tu folio antes de continuar.",
-        icon: "warning",
+        title: "Revisa tu folio",
+        html: `
+          Tu folio ingresado es: <strong>${formData.folio}</strong><br/>
+          Asegúrate de que esté correcto antes de continuar.
+        `,
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonText: "Sí, continuar",
+        cancelButtonText: "No, revisar",
         confirmButtonColor: "#1B263B",
+        cancelButtonColor: "#D33",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setStep(2); // Solo avanzar si confirma
+        }
       });
-      return;
-    }
-    setStep(2);
-  } else if (step === 2) {
+    } else if (step === 2) {
     // Validar campos obligatorios del paso 2
     const requiredFields = [
       "nombreCompleto",
@@ -207,16 +242,15 @@ const handleNextStep = () => {
               name="folio"
               placeholder="Folio"
               value={formData.folio}
-              onChange={handleChange}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  setStep(2);
-                }
+              onChange={(e) => {
+                // Convertir a mayúsculas y eliminar caracteres inválidos
+                const value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+                setFormData({ ...formData, folio: value.slice(0, 9) }); // Máximo 9 caracteres
               }}
               className="formulario-input"
               required
             />
+
 
             <small style={{ color: "#1B263B", marginBottom: "0.5rem" }}>
               Si aún no cuentas con un folio para inscribirte en la carrera,
