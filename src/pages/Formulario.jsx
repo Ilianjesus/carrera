@@ -4,9 +4,12 @@ import logo from "../assets/LogoPDMU.jpeg";
 import { FaWhatsapp } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "../styles/Home.css";
+import imgIlustrativa from "../assets/ImagenIlustrativa.png";
 
 function Formulario() {
-  const [step, setStep] = useState(1); // Paso actual
+  const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     nombreCompleto: "",
     fechaNacimiento: "",
@@ -19,11 +22,11 @@ function Formulario() {
     contactoEmergenciaTelefono: "",
     condicionesMedicas: "",
     folio: "",
+    personalizarPlayera: false,
+    nombrePlayera: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const tallas = ["XS", "S", "M", "L", "XL"];
-
 
   const handleChange = (e) => {
     setFormData({
@@ -32,31 +35,75 @@ function Formulario() {
     });
   };
 
-  // IMPORTANTE: ahora handleSubmit evita enviar si estamos en paso 1
+const handleNextStep = () => {
+  if (step === 1) {
+    // Validar que el folio esté lleno
+    if (!formData.folio.trim()) {
+      Swal.fire({
+        title: "Campo requerido",
+        text: "Debes ingresar tu folio antes de continuar.",
+        icon: "warning",
+        confirmButtonColor: "#1B263B",
+      });
+      return;
+    }
+    setStep(2);
+  } else if (step === 2) {
+    // Validar campos obligatorios del paso 2
+    const requiredFields = [
+      "nombreCompleto",
+      "fechaNacimiento",
+      "rama",
+      "telefono",
+      "correo",
+      "contactoEmergenciaNombre",
+      "contactoEmergenciaTelefono",
+    ];
+
+    const missingFields = requiredFields.filter(
+      (field) => !formData[field] || formData[field].trim() === ""
+    );
+
+    if (missingFields.length > 0) {
+      Swal.fire({
+        title: "Campos incompletos",
+        text: "Por favor, completa todos los campos requeridos antes de continuar.",
+        icon: "warning",
+        confirmButtonColor: "#1B263B",
+      });
+      return;
+    }
+
+    setStep(3);
+  }
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Si el submit ocurre en el paso 1, solo avanza
+
+    // Step control logic
     if (step === 1) {
       setStep(2);
       return;
     }
-  
-    // Evitar doble envío
+    if (step === 2) {
+      setStep(3);
+      return;
+    }
+
     if (isSubmitting) return;
-  
-    setIsSubmitting(true); // 🔒 bloquea el botón
-  
+    setIsSubmitting(true);
+
     try {
       const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-  
+
       const result = await response.json();
       console.log(result);
-  
+
       if (response.ok && result.status === "success") {
         Swal.fire({
           title: "¡Inscripción exitosa! 🎉",
@@ -65,8 +112,26 @@ function Formulario() {
               <strong>¡Felicidades, ${formData.nombreCompleto}!</strong>
             </p>
             <p style="color:#1B263B;">
-              Has concluido tu registro correctamente. <br />
-              Preséntate el día <strong>8 de Noviembre</strong> con tu folio para recoger tu kit 🎽 <br />
+              Has concluido tu registro correctamente.<br /><br />
+              ${
+                formData.personalizarPlayera
+                  ? `
+                    <strong>✅ Personalización confirmada:</strong><br />
+                    👕Tu playera será personalizada con la palabra:
+                    <strong>${formData.nombrePlayera}</strong> <br />
+                    <span style="color:#E63946;">
+                      Recuerda que al haber seleccionado esta opción, te comprometes a realizar el pago adicional de 
+                      <strong>$50 MXN</strong> al momento de recoger tu kit, de lo contrario no se te podrá hacer entrega de la playera.
+                    </span><br /><br />
+                  `
+                  : ""
+              }
+      
+              <span style="color:#457B9D; font-weight:bold;">
+                📸 Te recomendamos tomar una captura de pantalla de esta confirmación para cualquier aclaración futura.
+              </span><br /><br />
+      
+              Preséntate el día <strong>8 de Noviembre</strong> con tu folio para recoger tu kit 🎽.<br />
               ¡Nos vemos en la carrera! 🏃‍♀️🏅
             </p>
           `,
@@ -74,8 +139,7 @@ function Formulario() {
           confirmButtonText: "Aceptar",
           confirmButtonColor: "#1B263B",
         });
-        
-  
+
         setFormData({
           nombreCompleto: "",
           fechaNacimiento: "",
@@ -88,6 +152,8 @@ function Formulario() {
           contactoEmergenciaTelefono: "",
           condicionesMedicas: "",
           folio: "",
+          personalizarPlayera: false,
+          nombrePlayera: "",
         });
         setStep(1);
       } else {
@@ -108,14 +174,13 @@ function Formulario() {
         confirmButtonText: "Cerrar",
       });
     } finally {
-      setIsSubmitting(false); // 🔓 libera el botón
+      setIsSubmitting(false);
     }
   };
-  
 
   const whatsappNumber = "522711033134";
   const whatsappMessage =
-    "Hola, me gustaria adquirir un folio para inscribirme a la carrera!";
+    "Hola, me gustaría adquirir un folio para inscribirme a la carrera!";
 
   const handleWhatsapp = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -131,11 +196,11 @@ function Formulario() {
         <img src={logo} alt="Pentathlon Logo" className="form-logo-circle" />
       </div>
 
-      {/* El form mantiene onSubmit, pero handleSubmit evita el envío en step 1 */}
       <form className="formulario-form" onSubmit={handleSubmit} translate="no">
+        {/* STEP 1 - FOLIO */}
         {step === 1 && (
           <>
-            <h2 className="formulario-section-title">Validación</h2>
+            <h2 className="formulario-section-title">Validación de Folio</h2>
 
             <input
               type="text"
@@ -143,7 +208,6 @@ function Formulario() {
               placeholder="Folio"
               value={formData.folio}
               onChange={handleChange}
-              // Evita que Enter envíe el formulario; en su lugar avanza al paso 2
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
@@ -156,7 +220,7 @@ function Formulario() {
 
             <small style={{ color: "#1B263B", marginBottom: "0.5rem" }}>
               Si aún no cuentas con un folio para inscribirte en la carrera,
-              puedes adquirirlo contactándote con el organizador usando el boton de WhatsApp que se encuentra a continuacion:
+              puedes adquirirlo contactando al organizador:
             </small>
 
             <button
@@ -166,21 +230,21 @@ function Formulario() {
             >
               <FaWhatsapp className="icon" /> Contactar por WhatsApp
             </button>
-                        
 
             <div className="home-buttons">
             <button
-              type="button" // continuar no envía, sólo cambia de paso
+              type="button"
               className="btn-primary"
-              onClick={() => setStep(2)}
-              disabled={!formData.folio}
+              onClick={handleNextStep}
             >
               Continuar
             </button>
+
             </div>
           </>
         )}
 
+        {/* STEP 2 - DATOS PERSONALES */}
         {step === 2 && (
           <>
             <h2 className="formulario-section-title">Datos Personales</h2>
@@ -191,14 +255,12 @@ function Formulario() {
               placeholder="Nombre completo"
               value={formData.nombreCompleto}
               onChange={(e) => {
-                // Solo letras, espacios y tildes
                 const value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
                 setFormData({ ...formData, nombreCompleto: value });
               }}
               className="formulario-input"
               required
             />
-
 
             <label htmlFor="fechaNacimiento" className="formulario-label">
               Fecha de nacimiento
@@ -210,11 +272,9 @@ function Formulario() {
               value={formData.fechaNacimiento}
               onChange={handleChange}
               className="formulario-input"
-              max={new Date().toISOString().split("T")[0]} // hoy como fecha máxima
+              max={new Date().toISOString().split("T")[0]}
               required
             />
-
-
 
             <select
               name="rama"
@@ -234,14 +294,12 @@ function Formulario() {
               placeholder="Teléfono"
               value={formData.telefono}
               onChange={(e) => {
-                // Solo números y máximo 10 dígitos
                 const value = e.target.value.replace(/\D/g, "").slice(0, 10);
                 setFormData({ ...formData, telefono: value });
               }}
               className="formulario-input"
               required
             />
-
 
             <input
               type="email"
@@ -252,7 +310,8 @@ function Formulario() {
               className="formulario-input"
               required
             />
-                        <input
+
+            <input
               type="text"
               name="contactoEmergenciaNombre"
               placeholder="Nombre de contacto de emergencia"
@@ -269,12 +328,14 @@ function Formulario() {
               value={formData.contactoEmergenciaTelefono}
               onChange={(e) => {
                 const value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                setFormData({ ...formData, contactoEmergenciaTelefono: value });
+                setFormData({
+                  ...formData,
+                  contactoEmergenciaTelefono: value,
+                });
               }}
               className="formulario-input"
               required
             />
-
 
             <textarea
               name="condicionesMedicas"
@@ -284,6 +345,29 @@ function Formulario() {
               className="formulario-textarea"
             />
 
+        <div className="home-buttons">
+          <button
+            type="button"
+            className="btn-primary2"
+            onClick={() => setStep(1)}
+          >
+            Atrás
+          </button>
+          <button
+            type="button"
+            className="btn-primary"
+            onClick={handleNextStep}
+          >
+            Continuar
+          </button>
+        </div>
+
+          </>
+        )}
+
+        {/* STEP 3 - DATOS DE LA CARRERA */}
+        {step === 3 && (
+          <>
             <h2 className="formulario-section-title">Datos de la Carrera</h2>
 
             <select
@@ -299,43 +383,89 @@ function Formulario() {
             </select>
 
             <select
-  name="tallaPlayera"
-  value={formData.tallaPlayera}
-  onChange={handleChange}
-  className="formulario-select"
-  required
-  translate="no" // 🚫 evita traducción automática
->
-  <option value="" disabled hidden>
-    Selecciona tu talla de playera
-  </option>
-  {tallas.map((t) => (
-    <option key={t} value={t} translate="no">
-      {t}
-    </option>
-  ))}
-</select>
+              name="tallaPlayera"
+              value={formData.tallaPlayera}
+              onChange={handleChange}
+              className="formulario-select"
+              required
+              translate="no"
+            >
+              <option value="" disabled hidden>
+                Selecciona tu talla de playera
+              </option>
+              {tallas.map((t) => (
+                <option key={t} value={t} translate="no">
+                  {t}
+                </option>
+              ))}
+            </select>
 
+            <div className="formulario-checkbox-group">
+              <label className="formulario-checkbox-label">
+                <input
+                  type="checkbox"
+                  name="personalizarPlayera"
+                  checked={formData.personalizarPlayera}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      personalizarPlayera: e.target.checked,
+                      nombrePlayera: e.target.checked ? formData.nombrePlayera : "",
+                    })
+                  }
+                />
+                <span className="checkbox-text">
+                  Deseo <strong>personalizar mi playera</strong> con mi nombre, y <strong>me comprometo a cubrir el costo adicional de $50 MXN </strong> 
+                  al momento de recoger mi kit. Entiendo que, sin este pago, <strong>no se podrá entregar la playera personalizada.</strong>
+                </span>
+              </label>
+            </div>
+
+
+            {formData.personalizarPlayera && (
+          <div className="personalizacion-container">
+            <input
+              type="text"
+              name="nombrePlayera"
+              placeholder="Nombre para la playera"
+              value={formData.nombrePlayera}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+                setFormData({ ...formData, nombrePlayera: value });
+              }}
+              className="formulario-input"
+              required
+            />
+        
+            <div className="imagen-ilustrativa-container">
+              <p className="imagen-ilustrativa-text">
+                Ejemplo de personalización:
+              </p>
+              <img
+                src={imgIlustrativa}
+                alt="Ejemplo de playera personalizada"
+                className="imagen-ilustrativa"
+              />
+            </div>
+          </div>
+        )}
 
 
             <div className="home-buttons">
               <button
                 type="button"
                 className="btn-primary2"
-                onClick={() => setStep(1)}
+                onClick={() => setStep(2)}
               >
                 Atrás
               </button>
-
-              {/* Este botón hace submit del form y aquí handleSubmit sí enviará */}
               <button
                 type="submit"
                 className="btn-primary"
-                disabled={isSubmitting} // deshabilita mientras se envía
+                disabled={isSubmitting}
               >
                 {isSubmitting ? "Enviando..." : "Enviar Inscripción"}
               </button>
-
             </div>
           </>
         )}

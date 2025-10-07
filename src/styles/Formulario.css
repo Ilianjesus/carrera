@@ -146,3 +146,61 @@
 .btn-primary.full-width {
   width: 100%;
 }
+
+/* Formulario si desea personalizar */
+.formulario-checkbox-group {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.formulario-checkbox-label {
+  color: #1B263B;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.checkbox-text {
+  display: inline-block;
+  text-align: left;
+  max-width: 100%;
+}
+
+.formulario-checkbox-label input[type="checkbox"] {
+  accent-color: #1B263B;
+  transform: scale(1.2);
+}
+
+.personalizacion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.imagen-ilustrativa-container {
+  text-align: center;
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.imagen-ilustrativa-text {
+  color: #1B263B;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.imagen-ilustrativa {
+  width: 80%;
+  max-width: 300px;
+  border-radius: 10px;
+  border: 2px solid #1B263B;
+}
+
+
