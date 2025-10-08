@@ -14,7 +14,7 @@ function Home() {
     navigate("/formulario");
   };
 
-  const whatsappNumber = "522711033134";
+  const whatsappNumber = "522714120511";
   const whatsappMessage = "Hola, podria brindarme información sobre la carrera";
 
   const handleWhatsapp = () => {
