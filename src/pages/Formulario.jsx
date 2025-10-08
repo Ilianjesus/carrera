@@ -26,7 +26,7 @@ function Formulario() {
     nombrePlayera: "",
   });
 
-  const tallas = ["XS", "S", "M", "L", "XL"];
+  const tallas = ["12 (Infantil)","14 (Infantil)","16 (Infantil)","XS", "S", "M", "L", "XL"];
 
   const handleChange = (e) => {
     setFormData({

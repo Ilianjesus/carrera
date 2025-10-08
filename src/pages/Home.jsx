@@ -60,7 +60,8 @@ function Home() {
   🏆 <strong>Premiación:</strong><br />
   🥇 1er lugar – $1,500<br />
   🥈 2do lugar – $1,000<br />
-  🥉 3er lugar – $500<br /><br />
+  🥉 3er lugar – $500 <br />
+  (Categoria 5km, ambas ramas)<br /><br />
   ¡No lo pienses más! Inscríbete y vive la emoción de correr junto a verdaderos campeones.
 </p>
 
