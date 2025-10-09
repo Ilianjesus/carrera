@@ -4,7 +4,7 @@ import logo from "../assets/LogoPDMU.jpeg";
 import { FaWhatsapp } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "../styles/Home.css";
-import imgIlustrativa from "../assets/ImagenIlustrativa.png";
+import playeraPersonalizada from "../assets/Pers.png";
 
 function Formulario() {
   const [step, setStep] = useState(1);
@@ -457,32 +457,49 @@ function Formulario() {
 
 
             {formData.personalizarPlayera && (
-          <div className="personalizacion-container">
-            <input
-              type="text"
-              name="nombrePlayera"
-              placeholder="Nombre para la playera"
-              value={formData.nombrePlayera}
-              onChange={(e) => {
-                const value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
-                setFormData({ ...formData, nombrePlayera: value });
-              }}
-              className="formulario-input"
-              required
-            />
-        
-            <div className="imagen-ilustrativa-container">
-              <p className="imagen-ilustrativa-text">
-                Ejemplo de personalización:
-              </p>
-              <img
-                src={imgIlustrativa}
-                alt="Ejemplo de playera personalizada"
-                className="imagen-ilustrativa"
+            <div className="personalizacion-container">
+              <input
+                type="text"
+                name="nombrePlayera"
+                placeholder="Nombre para la playera"
+                value={formData.nombrePlayera}
+                onChange={(e) => {
+                  // Solo letras y espacios
+                  const value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+                
+                  if (value.length > 11) {
+                    Swal.fire({
+                      title: "Límite alcanzado",
+                      text: "El nombre para la playera solo puede tener un máximo de 11 caracteres.",
+                      icon: "info",
+                      confirmButtonColor: "#1B263B",
+                    });
+                    return; // evita actualizar el estado con texto más largo
+                  }
+                
+                  setFormData({ ...formData, nombrePlayera: value });
+                }}
+                className="formulario-input"
+                required
               />
+
+              <small style={{ color: "#1B263B", fontSize: "0.85rem" }}>
+                Máximo 11 caracteres
+              </small>
+              
+              <div className="imagen-ilustrativa-container">
+                <p className="imagen-ilustrativa-text">
+                  Ejemplo de personalización:
+                </p>
+                <img
+                  src={playeraPersonalizada}
+                  alt="Ejemplo de playera personalizada"
+                  className="imagen-ilustrativa"
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+
 
 
             <div className="home-buttons">
