@@ -87,29 +87,51 @@ function Formulario() {
         }
       });
     } else if (step === 2) {
-    // Validar campos obligatorios del paso 2
-    const requiredFields = [
-      "nombreCompleto",
-      "fechaNacimiento",
-      "rama",
-      "telefono",
-      "correo",
-      "contactoEmergenciaNombre",
-      "contactoEmergenciaTelefono",
-    ];
-
-    const missingFields = requiredFields.filter(
-      (field) => !formData[field] || formData[field].trim() === ""
-    );
-
-    if (missingFields.length > 0) {
-      Swal.fire({
-        title: "Campos incompletos",
-        text: "Por favor, completa todos los campos requeridos antes de continuar.",
-        icon: "warning",
-        confirmButtonColor: "#1B263B",
-      });
-      return;
+      // Validar campos obligatorios del paso 2
+      const requiredFields = [
+        "nombreCompleto",
+        "fechaNacimiento",
+        "rama",
+        "telefono",
+        "correo",
+        "contactoEmergenciaNombre",
+        "contactoEmergenciaTelefono",
+      ];
+    
+      const missingFields = requiredFields.filter(
+        (field) => !formData[field] || formData[field].trim() === ""
+      );
+    
+      if (missingFields.length > 0) {
+        Swal.fire({
+          title: "Campos incompletos",
+          text: "Por favor, completa todos los campos requeridos antes de continuar.",
+          icon: "warning",
+          confirmButtonColor: "#1B263B",
+        });
+        return;
+      }
+    
+      // Validar longitud del teléfono principal
+      if (formData.telefono.length !== 10) {
+        Swal.fire({
+          title: "Teléfono inválido",
+          text: "El número de teléfono debe contener exactamente 10 dígitos.",
+          icon: "warning",
+          confirmButtonColor: "#1B263B",
+        });
+        return;
+      }
+    
+      // Validar longitud del teléfono de emergencia
+      if (formData.contactoEmergenciaTelefono.length !== 10) {
+        Swal.fire({
+          title: "Teléfono de emergencia inválido",
+          text: "El número de teléfono de emergencia debe contener exactamente 10 dígitos.",
+          icon: "warning",
+          confirmButtonColor: "#1B263B",
+        });
+        return;
     }
 
     setStep(3);
