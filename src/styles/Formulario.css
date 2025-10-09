@@ -154,26 +154,6 @@
   align-items: flex-start;
 }
 
-.formulario-checkbox-label {
-  color: #1B263B;
-  font-weight: 500;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.4;
-}
-
-.checkbox-text {
-  display: inline-block;
-  text-align: left;
-  max-width: 100%;
-}
-
-.formulario-checkbox-label input[type="checkbox"] {
-  accent-color: #1B263B;
-  transform: scale(1.2);
-}
-
 .personalizacion-container {
   display: flex;
   flex-direction: column;
@@ -203,4 +183,57 @@
   border: 2px solid #1B263B;
 }
 
+.formulario-checkbox-group.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
 
+.formulario-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: #1B263B;
+}
+
+.formulario-checkbox-label input {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.checkbox-text {
+  cursor: pointer;
+}
+
+.btn-toggle-info {
+  background: none;
+  border: none;
+  color: #1B263B;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+}
+
+.btn-toggle-info:hover {
+  color: #415A77;
+}
+
+.info-desplegable {
+  background-color: #f7f9fc;
+  border-left: 4px solid #1B263B;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #1B263B;
+  line-height: 1.4;
+  width: 100%;
+  box-sizing: border-box;
+}

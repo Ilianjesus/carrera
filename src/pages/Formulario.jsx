@@ -5,10 +5,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "../styles/Home.css";
 import playeraPersonalizada from "../assets/Pers.png";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+
 
 function Formulario() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPersonalizacionInfo, setShowPersonalizacionInfo] = useState(false);
 
   const [formData, setFormData] = useState({
     nombreCompleto: "",
@@ -434,7 +437,7 @@ function Formulario() {
               ))}
             </select>
 
-            <div className="formulario-checkbox-group">
+            <div className="formulario-checkbox-group vertical">
               <label className="formulario-checkbox-label">
                 <input
                   type="checkbox"
@@ -449,10 +452,33 @@ function Formulario() {
                   }
                 />
                 <span className="checkbox-text">
-                  Deseo <strong>personalizar mi playera</strong> con mi nombre, y <strong>me comprometo a cubrir el costo adicional de $50 MXN </strong> 
-                  al momento de recoger mi kit. Entiendo que, sin este pago, <strong>no se podrá entregar la playera personalizada.</strong>
+                  Deseo <strong>personalizar mi playera</strong> (costo adicional de $50 MXN)
                 </span>
               </label>
+                
+              <button
+                type="button"
+                className="btn-toggle-info"
+                onClick={() => setShowPersonalizacionInfo(!showPersonalizacionInfo)}
+              >
+                {showPersonalizacionInfo ? "Ocultar información" : "Más información"}{" "}
+                {showPersonalizacionInfo ? <FaChevronUp /> : <FaChevronDown />}
+              </button>
+                
+              {showPersonalizacionInfo && (
+                <div className="info-desplegable">
+                  <p>
+                    La personalización de la playera es completamente <strong>opcional</strong>.
+                    Si decides no personalizarla, recibirás el mismo modelo de playera,
+                    solo sin el nombre impreso.
+                  </p>
+                  <p>
+                    Si seleccionas esta opción, deberás cubrir un <strong>costo adicional de $50 MXN </strong>
+                    al momento de recoger tu kit. De no realizar el pago, no se podrá entregar la
+                    playera personalizada.
+                  </p>
+                </div>
+              )}
             </div>
 
 
