@@ -177,7 +177,7 @@ function Formulario() {
                 formData.personalizarPlayera
                   ? `
                     <strong>✅ Personalización confirmada:</strong><br />
-                    👕Tu playera será personalizada con la palabra:
+                    👕 Tu playera será personalizada con la palabra:
                     <strong>${formData.nombrePlayera}</strong> <br />
                     <span style="color:#E63946;">
                       Recuerda que al haber seleccionado esta opción, te comprometes a realizar el pago adicional de 
@@ -187,11 +187,16 @@ function Formulario() {
                   : ""
               }
       
+              <strong>📍 Punto de entrega del kit:</strong><br />
+              ☕ <strong>Punto Café Sucursal Centro</strong><br />
+              Av. 3 #13, Centro, 94500 Córdoba, Ver.<br />
+              🗓️ <strong>8 de noviembre</strong><br />
+              ⏰ De <strong>10:00 a.m.</strong> a <strong>5:00 p.m.</strong><br /><br />
+      
               <span style="color:#457B9D; font-weight:bold;">
                 📸 Te recomendamos tomar una captura de pantalla de esta confirmación para cualquier aclaración futura.
               </span><br /><br />
       
-              Preséntate el día <strong>8 de Noviembre</strong> con tu folio para recoger tu kit 🎽.<br />
               ¡Nos vemos en la carrera! 🏃‍♀️🏅
             </p>
           `,
