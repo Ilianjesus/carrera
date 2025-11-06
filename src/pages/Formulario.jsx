@@ -20,7 +20,7 @@ function Formulario() {
     telefono: "",
     correo: "",
     categoria: "",
-    tallaPlayera: "",
+    tallaPlayera: "W",
     contactoEmergenciaNombre: "",
     contactoEmergenciaTelefono: "",
     condicionesMedicas: "",
@@ -245,7 +245,7 @@ function Formulario() {
 
   const whatsappNumber = "522714120511";
   const whatsappMessage =
-    "Hola, me gustaría adquirir un folio para inscribirme a la carrera!";
+    "Hola, quisiera apartar la talla de mi playera, ¿Que tallas hay aun disponibles?!";
 
   const handleWhatsapp = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -446,7 +446,7 @@ function Formulario() {
               <option value="5k">5k</option>
             </select>
 
-            <select
+            {/*<select
               name="tallaPlayera"
               value={formData.tallaPlayera}
               onChange={handleChange}
@@ -462,7 +462,20 @@ function Formulario() {
                   {t}
                 </option>
               ))}
-            </select>
+            </select>*/}
+            <p style={{color:"#1B263B", fontWeight:"600", marginTop:"1rem"}}>
+              Playeras casi agotadas.<br/>
+              Para verificar si aún hay de tu talla disponible envía mensaje por WhatsApp.
+            </p>
+
+            <button
+              type="button"
+              className="formulario-whatsapp-button"
+              onClick={handleWhatsapp}
+            >
+              <FaWhatsapp className="icon" /> Ver disponibilidad de talla
+            </button>
+
 
             <div className="formulario-checkbox-group vertical">
               <label className="formulario-checkbox-label">
