@@ -477,49 +477,20 @@ function Formulario() {
             </button>
 
 
-            <div className="formulario-checkbox-group vertical">
-              <label className="formulario-checkbox-label">
-                <input
-                  type="checkbox"
-                  name="personalizarPlayera"
-                  checked={formData.personalizarPlayera}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      personalizarPlayera: e.target.checked,
-                      nombrePlayera: e.target.checked ? formData.nombrePlayera : "",
-                    })
-                  }
-                />
-                <span className="checkbox-text">
-                  Deseo <strong>personalizar mi playera</strong> (costo adicional de $50 MXN)
-                </span>
-              </label>
-                
-              <button
-                type="button"
-                className="btn-toggle-info"
-                onClick={() => setShowPersonalizacionInfo(!showPersonalizacionInfo)}
-              >
-                {showPersonalizacionInfo ? "Ocultar información" : "Más información"}{" "}
-                {showPersonalizacionInfo ? <FaChevronUp /> : <FaChevronDown />}
-              </button>
-                
-              {showPersonalizacionInfo && (
-                <div className="info-desplegable">
-                  <p>
-                    La personalización de la playera es completamente <strong>opcional</strong>.
-                    Si decides no personalizarla, recibirás el mismo modelo de playera,
-                    solo sin el nombre impreso.
-                  </p>
-                  <p>
-                    Si seleccionas esta opción, deberás cubrir un <strong>costo adicional de $50 MXN </strong>
-                    al momento de recoger tu kit. De no realizar el pago, no se podrá entregar la
-                    playera personalizada.
-                  </p>
-                </div>
-              )}
-            </div>
+           {/* Personalización deshabilitada temporalmente */}
+            <p
+              style={{
+                color: "#1B263B",
+                fontWeight: "600",
+                marginTop: "1rem",
+                backgroundColor: "#f1f1f1",
+                padding: "0.8rem",
+                borderRadius: "10px",
+              }}
+            >
+              ⚠️ La opción de personalizar la playera ya no está disponible.
+            </p>
+
 
 
             {formData.personalizarPlayera && (
